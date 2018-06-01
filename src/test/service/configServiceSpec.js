@@ -1,14 +1,14 @@
-var configService = require("../../service/configService.js");
-var whiteListedChannelList = ['in.ekstep', 'abcd'];
-var blackListedChannelList = ['xyz', 'zxy'];
-var allowedChannels = whiteListedChannelList;
-var blackListedChannels = blackListedChannelList;
+var configService = require("../../service/configService.js")
+var whiteListedChannelList = ['in.ekstep', 'abcd']
+var blackListedChannelList = ['xyz', 'zxy']
+var allowedChannels = whiteListedChannelList
+var blackListedChannels = blackListedChannelList
 
-var searchString = {};
-var req = require('request');
+var searchString = {}
+var req = require('request')
 
 var mockAllowed = whiteListedChannelList
-var mockErrResponse = true;
+var mockErrResponse = true
 
 
 describe('getChannelSearchString', function () {
@@ -19,35 +19,34 @@ describe('getChannelSearchString', function () {
     describe('generateChannelSearchString for allowed channels', function () {
 
         it('allowed channels exists', function () {
-            expect(allowedChannels.length).toEqual(2);
-            expect(whiteListedChannelList).toBeDefined();
-        });
+            expect(allowedChannels.length).toEqual(2)
+            expect(whiteListedChannelList).toBeDefined()
+        })
 
         it('check the return value', function () {
             function getChannelSearchString(req, callback) {
                 setTimeout(function (callback) {
-                    callback();
-                }, 1000);
+                    callback()
+                }, 1000)
             }
-        });
+        })
 
         it('if allowedchannels is greater than 0', function () {
             searchString = allowedChannels;
-            expect(allowedChannels).toBe(whiteListedChannelList);
-            expect(allowedChannels.length).toBeGreaterThan(0);
-            expect(searchString).toEqual(allowedChannels);
+            expect(allowedChannels).toBe(whiteListedChannelList)
+            expect(allowedChannels.length).toBeGreaterThan(0)
+            expect(searchString).toEqual(allowedChannels)
         });
 
         if (allowedChannels) {
             it("for allowed Channels", function () {
-                searchString = allowedChannels;
-                expect(allowedChannels).toEqual(searchString);
+                searchString = allowedChannels
+                expect(allowedChannels).toEqual(searchString)
             });
         } else {
             it("for blacklisted channels", function () {
-                searchString = { 'ne': blackListedChannels };
-                expect(blackListedChannels).toEqual(searchString);
-
+                searchString = { 'ne': blackListedChannels }
+                expect(blackListedChannels).toEqual(searchString)
             });
         }
     });
@@ -59,11 +58,11 @@ describe('getChannelSearchString', function () {
         });
 
         it('check the return value', function () {
-            whiteListedChannelList = ['fsdfsd', 'fdsfds'];
+            whiteListedChannelList = ['fsdfsd', 'fdsfds']
             blackListedChannelList = ['fdsf', 'fsdfdsfdasfsadf']
             spyOn(getChannelSearchString, 'generateChannelSearchString')
             getChannelSearchString.generateChannelSearchString(whiteListedChannelList, blackListedChannelList)
-            expect(getChannelSearchString.getChannelSearchString).toHaveBeenCalled();
+            expect(getChannelSearchString.getChannelSearchString).toHaveBeenCalled()
         });
     });
 });

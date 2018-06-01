@@ -1,5 +1,5 @@
-var configService = require('../../service/configService');
-var req = require('request');
+var configService = require('../../service/configService')
+var req = require('request')
 
 mockSuccesResponse = {
     id: "api.v1.search",
@@ -12,7 +12,7 @@ mockSuccesResponse = {
         appId: "qa.ekstep.in",
         channel: "in.ekstep"
     }]
-};
+}
 
 mockErrResponse = {
     id: "api.v1.search",
@@ -21,7 +21,7 @@ mockErrResponse = {
     statusCode: "500",
     error: "CLIENT_ERROR",
     result: ''
-};
+}
 
 describe("filter of channels", function () {
     it('check getchannelsgetChannelSearchStringearchstring function', function () {
@@ -33,8 +33,8 @@ describe("filter of channels", function () {
         // expect(configService.getChannelSearchString).toHaveBeenCalled();
         expect(mockErrResponse.statusCode).toBe(500)
         expect(mockErrResponse.error).toBeDefined()
-    });
-});
+    })
+})
 
 // describe("Testing for error response", function() {
 // it('get Channel to be called with error', function() { 
